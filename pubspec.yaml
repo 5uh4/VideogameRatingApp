@@ -1,5 +1,5 @@
 name: videogame_rater
-description: A new Flutter project.
+description: Proyecto final para la asignatura de Programacion de Moviles y Multimedia.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -56,8 +56,12 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+  fonts:
+    - family: Open Sans
+      fonts:
+        - asset: fonts/OpenSans-Regular.ttf
+        - asset: fonts/OpenSans-Bold.ttf
   uses-material-design: true
-
   assets:
     - assets/videogamejson.json
   # To add assets to your application, add an assets section, like this:

@@ -45787,7 +45787,8 @@
     "Length.Main Story.Leisure": 7.033333333333333,
     "Length.Main Story.Median": 5,
     "Length.Main Story.Polled": 14,
-    "Length.Main Story.Rushed": 4.2
+    "Length.Main Story.Rushed": 4.2,
+    "favorite": true
   },
   {
     "Title": "The Legend of Kage 2",
