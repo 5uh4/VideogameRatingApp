@@ -1,6 +1,7 @@
 # videogame_rater
 
-A new Flutter project.
+Proyecto final de la asignatura de Programacion Multimedia y Dispositivos moviles. Trabajo realizado por Suhail Matrouch Mohamed.
+Aplicación con persistencia de datos a través de un archivo JSON, permite visualizar una lista de videojuegos que pueden ser guardados como favoritos y también se les puede asignar una puntuación.
 
 ## Getting Started
 

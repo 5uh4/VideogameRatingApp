@@ -206,9 +206,11 @@ class _GameScreenState extends State<GameScreen> {
               isFav = true;
             });
           },
-          child: Icon((isFav = false)
-              ? Icons.favorite_border_rounded
-              : Icons.favorite_rounded)),
+          child: Icon(
+              (isFav == false)
+                  ? Icons.favorite_border_rounded
+                  : Icons.favorite_rounded,
+              size: 30)),
     );
   }
 }
