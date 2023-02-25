@@ -201,11 +201,14 @@ class _GameScreenState extends State<GameScreen> {
             ))
       ]),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {isFav = true},
-        child: isFav == false
-            ? const Icon(Icons.favorite_border_rounded)
-            : const Icon(Icons.favorite_rounded),
-      ),
+          onPressed: () {
+            setState(() {
+              isFav = true;
+            });
+          },
+          child: Icon((isFav = false)
+              ? Icons.favorite_border_rounded
+              : Icons.favorite_rounded)),
     );
   }
 }
