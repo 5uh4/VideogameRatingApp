@@ -1,11 +1,10 @@
 // ignore_for_file: library_prefixes, unnecessary_null_comparison
-
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' as rootBundle;
-import 'package:videogame_rater/models/videogameModel.dart';
-import 'package:videogame_rater/screens/GameScreen.dart';
+import 'package:videogame_rater/models/video_game_model.dart';
+import 'package:videogame_rater/screens/game_screen.dart';
+import 'package:videogame_rater/screens/search_screen.dart';
+
+import '../FileManager/file_manager_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,25 +15,41 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController editingController = TextEditingController();
+  late List<VideoGameModel> juegos;
+  FileManagerService fms = FileManagerService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('VideoGame rater'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SearchScreen(
+                              juegos: juegos,
+                            )));
+              },
+              icon: const Icon(Icons.search))
+        ],
       ),
       body: FutureBuilder(
-          future: leerJsonData(),
+          future: fms.leerJsonData(),
           builder: (context, data) {
             if (data.hasError) {
               return Center(child: Text("${data.error}"));
             } else if (data.hasData) {
-              var juegos = data.data as List<VideoGameModel>;
+              juegos = data.data as List<VideoGameModel>;
               return ListView.builder(
                   itemCount: juegos == null ? 0 : juegos.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       child: Card(
                         elevation: 5,
+                        color:
+                            Colors.primaries[index % Colors.primaries.length],
                         margin: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 6),
                         child: Container(
@@ -95,12 +110,5 @@ class _HomeScreenState extends State<HomeScreen> {
             }
           }),
     );
-  }
-
-  Future<List<VideoGameModel>> leerJsonData() async {
-    final jsondata =
-        await rootBundle.rootBundle.loadString('assets/videogamejson.json');
-    final list = json.decode(jsondata) as List<dynamic>;
-    return list.map((e) => VideoGameModel.fromJson(e)).toList();
   }
 }

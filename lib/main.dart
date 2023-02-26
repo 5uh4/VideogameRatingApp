@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:videogame_rater/screens/NavDrawer.dart';
-import 'package:videogame_rater/screens/Perfil.dart';
-import 'package:videogame_rater/screens/homescreen.dart';
+import 'package:videogame_rater/FileManager/file_manager_service.dart';
+import 'package:videogame_rater/screens/nav_drawer.dart';
+import 'package:videogame_rater/screens/search_screen.dart';
+import 'package:videogame_rater/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,8 +10,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +19,9 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => const MyHomePage(),
         "/videojuegos": (context) => const HomeScreen(),
-        "/perfil": (context) => const PerfilPersonal()
+        "/busqueda": (context) => const SearchScreen(
+              juegos: [],
+            )
       },
       theme: ThemeData(
         primarySwatch: Colors.indigo,
@@ -33,6 +34,7 @@ class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
   @override
   Widget build(BuildContext context) {
+    FileManagerService().leerJsonData();
     return Scaffold(
         drawer: const NavDrawer(),
         appBar: AppBar(
@@ -43,7 +45,10 @@ class MyHomePage extends StatelessWidget {
             padding: EdgeInsets.all(30.0),
             child: Text(
                 'Bienvenido al proyecto final de Suhail Matrouch Mohamed, la aplicación para calificar videojuegos',
-                style: TextStyle(fontFamily: 'Roboto')),
+                style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 25,
+                    fontStyle: FontStyle.italic)),
           ),
         ));
   }

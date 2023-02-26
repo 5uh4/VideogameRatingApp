@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:videogame_rater/models/videogameModel.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:videogame_rater/FileManager/file_manager_service.dart';
+import 'package:videogame_rater/models/video_game_model.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key, required this.juego});
@@ -12,9 +14,9 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
+  FileManagerService fms = FileManagerService();
   @override
   Widget build(BuildContext context) {
-    bool isFav = false;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.juego.title.toString()),
@@ -197,20 +199,101 @@ class _GameScreenState extends State<GameScreen> {
                     ],
                   ),
                 ),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Container(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8, right: 8),
+                                    child: Text(
+                                      'Tu puntuacion: ${widget.juego.ratingOutOfFive.toString()}',
+                                      style: const TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: 'Open Sans'),
+                                    ),
+                                  ),
+                                ])),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Container(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8, right: 8),
+                                    child: Text(
+                                      'Favorito: ${widget.juego.isFavGame.toString()}',
+                                      style: const TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: 'Open Sans'),
+                                    ),
+                                  ),
+                                ])),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ))
       ]),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              isFav = true;
-            });
-          },
-          child: Icon(
-              (isFav == false)
-                  ? Icons.favorite_border_rounded
-                  : Icons.favorite_rounded,
-              size: 30)),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          RatingBar.builder(
+            initialRating: widget.juego.ratingOutOfFive,
+            minRating: 1,
+            allowHalfRating: true,
+            itemCount: 5,
+            itemPadding:
+                const EdgeInsets.symmetric(horizontal: 7.0, vertical: 10.0),
+            itemBuilder: (context, _) => const Icon(
+              Icons.star,
+              color: Colors.amber,
+            ),
+            onRatingUpdate: (rating) {
+              widget.juego.ratingOutOfFive = rating;
+              fms.writeToJsonFile(widget.juego);
+            },
+          ),
+          FloatingActionButton(
+              onPressed: () {
+                setState(() {
+                  if (widget.juego.isFavGame) {
+                    widget.juego.isFavGame = false;
+                  } else {
+                    widget.juego.isFavGame = true;
+                  }
+                });
+              },
+              child: Icon(
+                  (widget.juego.isFavGame
+                      ? Icons.favorite_rounded
+                      : Icons.favorite_border_rounded),
+                  size: 25)),
+        ],
+      ),
     );
   }
 }

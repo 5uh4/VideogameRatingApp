@@ -10,21 +10,26 @@ class NavDrawer extends StatelessWidget {
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
       const DrawerHeader(
           child: Text(
-        'Editor',
+        'Navegación del programa',
         style: TextStyle(color: Colors.blueAccent, fontSize: 25),
       )),
       ListTile(
-        leading: const Icon(Icons.home),
+        leading: Icon(Icons.home, color: Colors.green.shade300),
         title: const Text('Bienvenida'),
         onTap: () => {Navigator.pushNamed(context, "/")},
       ),
       ListTile(
-        leading: const Icon(Icons.android_rounded),
+        leading: const Icon(Icons.list, color: Colors.lightBlue),
         title: const Text('Pantalla principal de la app'),
         onTap: () => {Navigator.pushNamed(context, "/videojuegos")},
       ),
       ListTile(
-        leading: const Icon(Icons.account_circle),
+        leading: const Icon(Icons.search),
+        title: const Text('Busqueda'),
+        onTap: () => {Navigator.pushNamed(context, "/busqueda")},
+      ),
+      ListTile(
+        leading: const Icon(Icons.account_circle, color: Colors.redAccent),
         title: const Text('Perfil'),
         onTap: () => {Navigator.pushNamed(context, "/perfil")},
       ),
