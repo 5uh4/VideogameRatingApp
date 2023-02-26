@@ -24,14 +24,9 @@ class NavDrawer extends StatelessWidget {
         onTap: () => {Navigator.pushNamed(context, "/videojuegos")},
       ),
       ListTile(
-        leading: const Icon(Icons.search),
-        title: const Text('Busqueda'),
-        onTap: () => {Navigator.pushNamed(context, "/busqueda")},
-      ),
-      ListTile(
-        leading: const Icon(Icons.account_circle, color: Colors.redAccent),
-        title: const Text('Perfil'),
-        onTap: () => {Navigator.pushNamed(context, "/perfil")},
+        leading: const Icon(Icons.info, color: Colors.lightBlue),
+        title: const Text('Pantalla de creditos de la aplicacion'),
+        onTap: () => {Navigator.pushNamed(context, "/creditos")},
       ),
     ]));
   }

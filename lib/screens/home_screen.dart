@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('VideoGame rater'),
+        //Al colocar aqui un boton podemos acceder a la pantalla de busqueda de titulos por nombre
         actions: [
           IconButton(
               onPressed: () {
@@ -35,14 +36,19 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: const Icon(Icons.search))
         ],
       ),
+      // Requerimos un future builder puesto que debe leer el archivo json que tenemos
+      // en nuestros assets y cargarlo en una lista
       body: FutureBuilder(
           future: fms.leerJsonData(),
           builder: (context, data) {
+            // Esto se asegura de que los datos se cargan correctamente.
             if (data.hasError) {
               return Center(child: Text("${data.error}"));
             } else if (data.hasData) {
               juegos = data.data as List<VideoGameModel>;
               return ListView.builder(
+                  // Y aquí creamos la lista con todos los juegos,
+                  // le añadimos decoracion para que sea mas agradable a la vista y este bien posicionada
                   itemCount: juegos == null ? 0 : juegos.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
@@ -95,6 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ],
                             )),
                       ),
+                      // Este onTap es el controlador de que al pinchar
                       onTap: () => {
                         Navigator.push(
                             context,

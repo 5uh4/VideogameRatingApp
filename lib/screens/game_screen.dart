@@ -6,7 +6,7 @@ import 'package:videogame_rater/models/video_game_model.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key, required this.juego});
-
+  // Aquí recibimos el juego de la pantalla principal
   final VideoGameModel juego;
 
   @override
@@ -18,9 +18,11 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Al asignar el titulo del juego al titulo de la appbar lo vemos directamente reflejado
       appBar: AppBar(
         title: Text(widget.juego.title.toString()),
       ),
+      // Este listview nos permite ver cada elemento del juego, es decir, los detalles del mismo
       body: ListView(children: [
         Card(
             elevation: 5,
@@ -188,63 +190,7 @@ class _GameScreenState extends State<GameScreen> {
                                     padding: const EdgeInsets.only(
                                         left: 8, right: 8),
                                     child: Text(
-                                      'Duracion media de la historia (en horas): ${widget.juego.lengthStory.toString()}',
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'Open Sans'),
-                                    ),
-                                  ),
-                                ])),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                            padding: const EdgeInsets.only(bottom: 8),
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8, right: 8),
-                                    child: Text(
-                                      'Tu puntuacion: ${widget.juego.ratingOutOfFive.toString()}',
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'Open Sans'),
-                                    ),
-                                  ),
-                                ])),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                            padding: const EdgeInsets.only(bottom: 8),
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8, right: 8),
-                                    child: Text(
-                                      'Favorito: ${widget.juego.isFavGame.toString()}',
+                                      'Duracion media de la historia (Horas): ${widget.juego.lengthStory.toString()}',
                                       style: const TextStyle(
                                           fontSize: 16,
                                           fontFamily: 'Open Sans'),
@@ -258,6 +204,7 @@ class _GameScreenState extends State<GameScreen> {
               ],
             ))
       ]),
+      // Por medio de est floating action button tenemos las estrellas para poder puntuar y el boton de favorito
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -272,12 +219,14 @@ class _GameScreenState extends State<GameScreen> {
               Icons.star,
               color: Colors.amber,
             ),
+            //Aquí actualizamos los datos de la lista para que se vea la puntuacion
             onRatingUpdate: (rating) {
               widget.juego.ratingOutOfFive = rating;
-              fms.writeToJsonFile(widget.juego);
+              setState(() {});
             },
           ),
           FloatingActionButton(
+              // Y aquí cambiamos el boton en funcion de si es favorito o no
               onPressed: () {
                 setState(() {
                   if (widget.juego.isFavGame) {
@@ -287,6 +236,8 @@ class _GameScreenState extends State<GameScreen> {
                   }
                 });
               },
+              // Por medio de este operador ternario determinamos el estado del boton,
+              // si es favorito esta relleno y si no esta hueco
               child: Icon(
                   (widget.juego.isFavGame
                       ? Icons.favorite_rounded

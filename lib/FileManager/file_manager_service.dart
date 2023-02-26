@@ -11,33 +11,11 @@ const initialAssetFile = 'assets/videogamejson.json';
 const localFileName = 'data.json';
 
 class FileManagerService {
-  Future<File> _initializeFile() async {
-    final localDirectory = await getExternalStorageDirectories();
-    final file = File('$localDirectory/$localFileName');
-    if (!await file.exists()) {
-      final initialContent = await rootBundle.loadString(initialAssetFile);
-      await file.create();
-      await file.writeAsString(initialContent);
-    }
-
-    return file;
-  }
-
+  //Este metodo se encarga de leer el archivo json en el que tenemos nuestros datos y
+  // convertirlos en una lista para que la pantalla principal pueda reflejarlo en su lista.
   Future<List<VideoGameModel>> leerJsonData() async {
-    /* final file = await _initializeFile();
-    final list = json.decode(file.toString()) as List<dynamic>;
-    return list.map((e) => VideoGameModel.fromJson(e)).toList(); */
     final jsondata = await rootBundle.loadString('assets/videogamejson.json');
     final list = json.decode(jsondata) as List<dynamic>;
-    return list.map((e) => VideoGameModel.fromJson(e)).toList();
-  }
-
-  Future<void> writeToJsonFile(VideoGameModel vgm) async {
-    try {
-      File jsonFile = await _initializeFile();
-      await jsonFile.writeAsString(json.encode(vgm));
-    } catch (e) {
-      print(e);
-    }
+    return Future.value(list.map((e) => VideoGameModel.fromJson(e)).toList());
   }
 }
