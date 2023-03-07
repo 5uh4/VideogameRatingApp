@@ -5,7 +5,8 @@
     "Metadata.Publishers": "Nintendo",
     "Release.Console": "Nintendo DS",
     "Release.Year": 2004,
-    "Length.Main Story.Median": 14.5
+    "Length.Main Story.Median": 14.5,
+    "ImageUrl": "https://m.media-amazon.com/images/I/51v6gajePmL._AC_.jpg"
   },
   {
     "Title": "Lumines: Puzzle Fusion",
@@ -43,7 +44,8 @@
     "Length.Main Story.Leisure": 11.083333333333334,
     "Length.Main Story.Median": 10,
     "Length.Main Story.Polled": 3,
-    "Length.Main Story.Rushed": 9.583333333333334
+    "Length.Main Story.Rushed": 9.583333333333334,
+    "ImageUrl": "https://m.media-amazon.com/images/M/MV5BNjdkYzQ2ZTktNDAzMS00NzIyLWIyYjgtODBhZjFkZTZiNTM5XkEyXkFqcGdeQXVyMTgwOTE5NDk@._V1_.jpg"
   },
   {
     "Title": "WarioWare Touched!",
@@ -81,7 +83,8 @@
     "Length.Main Story.Leisure": 2.9333333333333336,
     "Length.Main Story.Median": 1.8333333333333335,
     "Length.Main Story.Polled": 30,
-    "Length.Main Story.Rushed": 1.4333333333333333
+    "Length.Main Story.Rushed": 1.4333333333333333,
+    "ImageUrl": "https://i.ebayimg.com/images/g/YJkAAMXQOT5Q9hi0/s-l600.jpg"
   },
   {
     "Title": "Hot Shots Golf: Open Tee",
@@ -119,7 +122,8 @@
     "Length.Main Story.Leisure": 0,
     "Length.Main Story.Median": 0,
     "Length.Main Story.Polled": 0,
-    "Length.Main Story.Rushed": 0
+    "Length.Main Story.Rushed": 0,
+    "ImageUrl": "https://m.media-amazon.com/images/I/511UQ6T0x2L._AC_.jpg"
   },
   {
     "Title": "Spider-Man 2",
@@ -157,7 +161,8 @@
     "Length.Main Story.Leisure": 11.083333333333334,
     "Length.Main Story.Median": 8,
     "Length.Main Story.Polled": 23,
-    "Length.Main Story.Rushed": 5.333333333333333
+    "Length.Main Story.Rushed": 5.333333333333333,
+    "ImageUrl": "http://cdn.shopify.com/s/files/1/0082/3200/9781/products/ds_spiderman_2_p_8x485e.jpg?v=1589389643"
   },
   {
     "Title": "The Urbz: Sims in the City",
@@ -195,7 +200,8 @@
     "Length.Main Story.Leisure": 15.75,
     "Length.Main Story.Median": 15.5,
     "Length.Main Story.Polled": 2,
-    "Length.Main Story.Rushed": 15.25
+    "Length.Main Story.Rushed": 15.25,
+    "ImageUrl": "https://upload.wikimedia.org/wikipedia/en/9/9e/The_Urbz_-_Sims_in_the_City_Coverart.png"
   },
   {
     "Title": "Ridge Racer",
@@ -233,7 +239,8 @@
     "Length.Main Story.Leisure": 0.7833333333333333,
     "Length.Main Story.Median": 0.5333333333333333,
     "Length.Main Story.Polled": 3,
-    "Length.Main Story.Rushed": 0.45
+    "Length.Main Story.Rushed": 0.45,
+    "ImageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d3/Ridge_Racer_Coverart.png"
   },
   {
     "Title": "Metal Gear Ac!d",
@@ -271,7 +278,8 @@
     "Length.Main Story.Leisure": 23.6,
     "Length.Main Story.Median": 20.783333333333335,
     "Length.Main Story.Polled": 11,
-    "Length.Main Story.Rushed": 17.883333333333333
+    "Length.Main Story.Rushed": 17.883333333333333,
+    "ImageUrl": "https://static.wikia.nocookie.net/metalgear/images/9/92/Metal_gear_acid.jpg/revision/latest?cb=20081130154257&path-prefix=es"
   },
   {
     "Title": "Madden NFL 2005",
@@ -309,10 +317,11 @@
     "Length.Main Story.Leisure": 0,
     "Length.Main Story.Median": 0,
     "Length.Main Story.Polled": 0,
-    "Length.Main Story.Rushed": 0
+    "Length.Main Story.Rushed": 0,
+    "ImageUrl": "https://i.ebayimg.com/images/g/pq0AAOSwm8VUylT3/s-l300.jpg"
   },
   {
-    "Title": "Pokmon Dash",
+    "Title": "Pokemon Dash",
     "Features.Handheld?": "True",
     "Features.Max Players": 1,
     "Features.Multiplatform?": "True",
@@ -347,7 +356,8 @@
     "Length.Main Story.Leisure": 1.2,
     "Length.Main Story.Median": 1.0833333333333333,
     "Length.Main Story.Polled": 3,
-    "Length.Main Story.Rushed": 1.05
+    "Length.Main Story.Rushed": 1.05,
+    "ImageUrl": "https://static.wikia.nocookie.net/espokemon/images/e/e2/Pok%C3%A9mon_Dash.png/revision/latest?cb=20140222002709"
   },
   {
     "Title": "Dynasty Warriors",
@@ -385,7 +395,8 @@
     "Length.Main Story.Leisure": 18.05,
     "Length.Main Story.Median": 2.0833333333333335,
     "Length.Main Story.Polled": 4,
-    "Length.Main Story.Rushed": 3.1166666666666667
+    "Length.Main Story.Rushed": 3.1166666666666667,
+    "ImageUrl": "https://upload.wikimedia.org/wikipedia/en/8/86/Dynasty_Warriors_%28PSP%29_Coverart.png"
   },
   {
     "Title": "Feel the Magic XY/XX",
@@ -993,7 +1004,8 @@
     "Length.Main Story.Leisure": 21.9,
     "Length.Main Story.Median": 13.85,
     "Length.Main Story.Polled": 42,
-    "Length.Main Story.Rushed": 10.533333333333333
+    "Length.Main Story.Rushed": 10.533333333333333,
+    "ImageUrl": "https://m.media-amazon.com/images/I/51KmGOgf4gL._AC_.jpg"
   },
   {
     "Title": "Animal Crossing: Wild World",
@@ -1031,7 +1043,8 @@
     "Length.Main Story.Leisure": 135.58333333333334,
     "Length.Main Story.Median": 70,
     "Length.Main Story.Polled": 11,
-    "Length.Main Story.Rushed": 45.583333333333336
+    "Length.Main Story.Rushed": 45.583333333333336,
+    "ImageUrl": "https://m.media-amazon.com/images/I/61SHEZJH0QL.jpg"
   },
   {
     "Title": "Big Brain Academy",
@@ -16269,7 +16282,8 @@
     "Length.Main Story.Leisure": 23.566666666666666,
     "Length.Main Story.Median": 15,
     "Length.Main Story.Polled": 564,
-    "Length.Main Story.Rushed": 10.566666666666666
+    "Length.Main Story.Rushed": 10.566666666666666,
+    "ImageUrl": "https://static.wikia.nocookie.net/theassassinscreed/images/6/6a/Accover.jpg/revision/latest?cb=20100918021958&path-prefix=es"
   },
   {
     "Title": "LEGO Star Wars: The Complete Saga",
@@ -16307,7 +16321,8 @@
     "Length.Main Story.Leisure": 27.166666666666668,
     "Length.Main Story.Median": 14,
     "Length.Main Story.Polled": 48,
-    "Length.Main Story.Rushed": 11
+    "Length.Main Story.Rushed": 11,
+    "ImageUrl": "https://upload.wikimedia.org/wikipedia/en/5/56/Lego_Star_Wars-The_Complete_Saga.jpg"
   },
   {
     "Title": "Call of Duty 4: Modern Warfare",
@@ -16345,7 +16360,8 @@
     "Length.Main Story.Leisure": 13.433333333333334,
     "Length.Main Story.Median": 7,
     "Length.Main Story.Polled": 468,
-    "Length.Main Story.Rushed": 4.433333333333334
+    "Length.Main Story.Rushed": 4.433333333333334,
+    "ImageUrl": "https://static.wikia.nocookie.net/cod/images/b/b9/Car%C3%A1tula_COD4_MW.jpg/revision/latest?cb=20100107222404&path-prefix=es"
   },
   {
     "Title": "Mario & Sonic at the Olympic Games",
@@ -16383,7 +16399,8 @@
     "Length.Main Story.Leisure": 7,
     "Length.Main Story.Median": 7,
     "Length.Main Story.Polled": 1,
-    "Length.Main Story.Rushed": 7
+    "Length.Main Story.Rushed": 7,
+    "ImageUrl": "https://m.media-amazon.com/images/I/613YBwXTVzL._AC_.jpg"
   },
   {
     "Title": "LEGO Star Wars: The Complete Saga",
@@ -17105,7 +17122,8 @@
     "Length.Main Story.Leisure": 12.316666666666666,
     "Length.Main Story.Median": 10.716666666666667,
     "Length.Main Story.Polled": 8,
-    "Length.Main Story.Rushed": 8.316666666666666
+    "Length.Main Story.Rushed": 8.316666666666666,
+    "ImageUrl": "https://www.gran-turismo.com/images/c/i1ZNMGvhoaaUHz.jpg"
   },
   {
     "Title": "Professor Layton and the Curious Village",
@@ -17143,7 +17161,8 @@
     "Length.Main Story.Leisure": 33.81666666666667,
     "Length.Main Story.Median": 12.466666666666667,
     "Length.Main Story.Polled": 91,
-    "Length.Main Story.Rushed": 8.416666666666666
+    "Length.Main Story.Rushed": 8.416666666666666,
+    "ImageUrl": "https://m.media-amazon.com/images/I/61rQeGFjIwL._AC_SX466_.jpg"
   },
   {
     "Title": "Resident Evil 4",
@@ -17181,7 +17200,8 @@
     "Length.Main Story.Leisure": 27.616666666666667,
     "Length.Main Story.Median": 16,
     "Length.Main Story.Polled": 416,
-    "Length.Main Story.Rushed": 10.016666666666667
+    "Length.Main Story.Rushed": 10.016666666666667,
+    "ImageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202210/0712/cWZlv5HCWi4sGKuwVRO4c8Xg.png"
   },
   {
     "Title": "The Elder Scrolls IV: Oblivion",
@@ -17219,7 +17239,8 @@
     "Length.Main Story.Leisure": 99.2,
     "Length.Main Story.Median": 24,
     "Length.Main Story.Polled": 133,
-    "Length.Main Story.Rushed": 14.95
+    "Length.Main Story.Rushed": 14.95,
+    "ImageUrl": "https://static.wikia.nocookie.net/elderscrolls/images/e/e1/Oblivion_Cover.png/revision/latest?cb=20160815160654"
   },
   {
     "Title": "Transformers: Autobots",
@@ -31697,7 +31718,8 @@
     "Length.Main Story.Leisure": 46.88333333333333,
     "Length.Main Story.Median": 28,
     "Length.Main Story.Polled": 401,
-    "Length.Main Story.Rushed": 18.05
+    "Length.Main Story.Rushed": 18.05,
+    "ImageUrl": "https://i.3djuegos.com/juegos/1570/grand_theft_auto_iv/fotos/ficha/grand_theft_auto_iv-1681266.jpg"
   },
   {
     "Title": "Super Smash Bros.: Brawl",
@@ -31811,7 +31833,8 @@
     "Length.Main Story.Leisure": 46.88333333333333,
     "Length.Main Story.Median": 28,
     "Length.Main Story.Polled": 401,
-    "Length.Main Story.Rushed": 18.05
+    "Length.Main Story.Rushed": 18.05,
+    "ImageUrl": "https://m.media-amazon.com/images/I/81rSkcE4IYL.jpg"
   },
   {
     "Title": "Gears of War 2",
@@ -32457,7 +32480,8 @@
     "Length.Main Story.Leisure": 107.95,
     "Length.Main Story.Median": 62,
     "Length.Main Story.Polled": 6,
-    "Length.Main Story.Rushed": 47.95
+    "Length.Main Story.Rushed": 47.95,
+    "ImageUrl": "https://upload.wikimedia.org/wikipedia/en/8/89/Cityfolkbox.jpg"
   },
   {
     "Title": "Mario & Sonic at the Olympic Games",
@@ -32495,7 +32519,8 @@
     "Length.Main Story.Leisure": 7,
     "Length.Main Story.Median": 7,
     "Length.Main Story.Polled": 1,
-    "Length.Main Story.Rushed": 7
+    "Length.Main Story.Rushed": 7,
+    "ImageUrl": "https://m.media-amazon.com/images/I/613YBwXTVzL._AC_.jpg"
   },
   {
     "Title": "Madden NFL 09",

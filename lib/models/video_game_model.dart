@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, file_names
-import 'dart:convert';
-
 class VideoGameModel {
   String? title;
   String? genres;
@@ -10,6 +7,7 @@ class VideoGameModel {
   double? lengthStory;
   late bool isFavGame;
   late double ratingOutOfFive;
+  late String imageURL;
 
   VideoGameModel(
       {this.title,
@@ -19,7 +17,8 @@ class VideoGameModel {
       this.releaseYear,
       this.lengthStory,
       required this.isFavGame,
-      required this.ratingOutOfFive});
+      required this.ratingOutOfFive,
+      required this.imageURL});
 
   VideoGameModel.fromJson(Map<String, dynamic> json) {
     title = json['Title'];
@@ -30,6 +29,15 @@ class VideoGameModel {
     lengthStory = checkDouble(json['Length.Main Story.Median']);
     isFavGame = checkFavGame(json['isFavGame']);
     ratingOutOfFive = checkRating(json['ratingOutOfFive']);
+    imageURL = checkImage(json['ImageUrl']);
+  }
+
+  static String checkImage(dynamic value) {
+    if (value == null) {
+      return 'https://m.media-amazon.com/images/I/61o19LyJJBL.jpg';
+    } else {
+      return value;
+    }
   }
 
   static double checkDouble(dynamic value) {

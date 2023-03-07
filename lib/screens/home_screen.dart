@@ -64,6 +64,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
+                                SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: Image(
+                                        image: NetworkImage(
+                                            juegos[index].imageURL.toString()),
+                                        fit: BoxFit.fill)),
                                 Expanded(
                                   child: Container(
                                       padding: const EdgeInsets.only(bottom: 8),

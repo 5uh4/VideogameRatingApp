@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "545176499066",
+    "project_id": "gamerater-app",
+    "storage_bucket": "gamerater-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545176499066:android:60b68014822e43a6745cc3",
+        "android_client_info": {
+          "package_name": "com.suha.videogamerater"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545176499066-6g0jqofnl0oe96udamq75s0nkaavshd2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh1kDU92yWxO5DXTIZfDvW6c4vdA1N-LA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545176499066-6g0jqofnl0oe96udamq75s0nkaavshd2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
