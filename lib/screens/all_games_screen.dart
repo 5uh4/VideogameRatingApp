@@ -6,14 +6,14 @@ import 'package:videogame_rater/screens/search_screen.dart';
 
 import '../FileManager/file_manager_service.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class GamesScreen extends StatefulWidget {
+  const GamesScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<GamesScreen> createState() => _GamesScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _GamesScreenState extends State<GamesScreen> {
   TextEditingController editingController = TextEditingController();
   late List<VideoGameModel> juegos;
   FileManagerService fms = FileManagerService();

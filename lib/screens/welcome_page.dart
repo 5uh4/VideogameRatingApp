@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:videogame_rater/auth_controller.dart';
 
 import 'package:videogame_rater/screens/nav_drawer.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({
     Key? key,
   }) : super(key: key);
 
@@ -15,6 +16,13 @@ class HomePage extends StatelessWidget {
         //La appbar es la barra superior donde figura el titulo de nuestra aplicacion
         appBar: AppBar(
           title: const Text('Bienvenida'),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  AuthController.instance.logout();
+                },
+                icon: const Icon(Icons.logout_outlined))
+          ],
         ),
         body: const Center(
           child: Padding(
