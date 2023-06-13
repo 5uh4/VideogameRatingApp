@@ -1,10 +1,10 @@
 // ignore_for_file: library_prefixes, unnecessary_null_comparison
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:videogame_rater/FileManager/read_from_firebase.dart';
 import 'package:videogame_rater/models/video_game_model.dart';
 import 'package:videogame_rater/screens/game_screen.dart';
 import 'package:videogame_rater/screens/search_screen.dart';
-
-import '../FileManager/file_manager_service.dart';
 
 class GamesScreen extends StatefulWidget {
   const GamesScreen({super.key});
@@ -16,7 +16,8 @@ class GamesScreen extends StatefulWidget {
 class _GamesScreenState extends State<GamesScreen> {
   TextEditingController editingController = TextEditingController();
   late List<VideoGameModel> juegos;
-  FileManagerService fms = FileManagerService();
+  FirebaseManagerService fbs = FirebaseManagerService();
+  // FileManagerService fms = FileManagerService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,19 +37,19 @@ class _GamesScreenState extends State<GamesScreen> {
               icon: const Icon(Icons.search))
         ],
       ),
-      // Requerimos un future builder puesto que debe leer el archivo json que tenemos
-      // en nuestros assets y cargarlo en una lista
+      // Requerimos un future builder puesto que debe obtener informacion de la bd que tenemos
+      // en firebase y cargarlo en una lista
       body: FutureBuilder(
-          future: fms.leerJsonData(),
-          builder: (context, data) {
+          future: fbs.leerDesdeFireStore(),
+          builder: (context, snapshot) {
             // Esto se asegura de que los datos se cargan correctamente.
-            if (data.hasError) {
-              return Center(child: Text("${data.error}"));
-            } else if (data.hasData) {
-              juegos = data.data as List<VideoGameModel>;
+            if (snapshot.hasError) {
+              return Center(child: Text("${snapshot.error}"));
+            } else if (snapshot.hasData) {
+              juegos = snapshot.data!;
               return ListView.builder(
                   // Y aquí creamos la lista con todos los juegos,
-                  // le añadimos decoracion para que sea mas agradable a la vista y este bien posicionada
+                  // le añadimos decoracion
                   itemCount: juegos == null ? 0 : juegos.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
@@ -108,12 +109,12 @@ class _GamesScreenState extends State<GamesScreen> {
                               ],
                             )),
                       ),
-                      // Este onTap es el controlador de que al pinchar
+                      // Este onTap es el controlador que envia a la pantalla del juego concreto al pinchar en el
                       onTap: () => {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => GameScreen(
+                                builder: (context) => GameScreenSinDb(
                                       juego: juegos[index],
                                     )))
                       },

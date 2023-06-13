@@ -57,7 +57,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => GameScreen(juego: juego),
+                        builder: (context) => GameScreenSinDb(juego: juego),
                       )),
                 );
               },

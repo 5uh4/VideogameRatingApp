@@ -1,20 +1,85 @@
 // ignore_for_file: file_names
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:videogame_rater/FileManager/file_manager_service.dart';
 import 'package:videogame_rater/models/video_game_model.dart';
 
-class GameScreen extends StatefulWidget {
-  const GameScreen({super.key, required this.juego});
+class GameScreenSinDb extends StatefulWidget {
+  const GameScreenSinDb({super.key, required this.juego});
   // Aquí recibimos el juego de la pantalla principal
   final VideoGameModel juego;
 
   @override
-  State<GameScreen> createState() => _GameScreenState();
+  State<GameScreenSinDb> createState() => _GameScreenSinDbState();
 }
 
-class _GameScreenState extends State<GameScreen> {
-  FileManagerService fms = FileManagerService();
+class _GameScreenSinDbState extends State<GameScreenSinDb> {
+  bool isFav = false;
+  double rating = 0.0;
+  DocumentReference<Map<String, dynamic>>? userRatingDoc;
+
+  @override
+  void initState() {
+    super.initState();
+    loadUserRatingAndFavoriteStatus();
+  }
+
+// Método para cargar la puntuación y el estado de favorito en la pantalla
+  Future<void> loadUserRatingAndFavoriteStatus() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final userId = user.uid;
+      final gameId = widget.juego.title;
+
+      final videoGameRef = await FirebaseFirestore.instance
+          .collection('videogames')
+          .where('Title', isEqualTo: gameId)
+          .limit(1)
+          .get();
+
+      if (videoGameRef.docs.isNotEmpty) {
+        final videoGameDoc = videoGameRef.docs.first;
+
+        final userSnapshot = await FirebaseFirestore.instance
+            .collection('usuarios')
+            .doc(userId)
+            .collection('puntuaciones')
+            .where('Videogame', isEqualTo: videoGameDoc.reference)
+            .limit(1)
+            .get();
+
+        if (userSnapshot.docs.isNotEmpty) {
+          userRatingDoc = userSnapshot.docs.first.reference;
+          final userData = userSnapshot.docs.first.data();
+          final rating = userData['Rating'] as double;
+          final favorite = userData['Favorite'] as bool;
+          setState(() {
+            this.rating = rating;
+            isFav = favorite;
+          });
+        } else {
+          userRatingDoc =
+              await createNewUserRatingDocument(userId, videoGameDoc.reference);
+          setState(() {
+            rating = 0.0;
+            isFav = false;
+          });
+        }
+      }
+    }
+  }
+
+  Future<DocumentReference<Map<String, dynamic>>> createNewUserRatingDocument(
+      String userId,
+      DocumentReference<Map<String, dynamic>> videoGameRef) async {
+    return await FirebaseFirestore.instance
+        .collection('usuarios')
+        .doc(userId)
+        .collection('puntuaciones')
+        .add({'Videogame': videoGameRef, 'Favorite': false, 'Rating': 0.0});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -237,12 +302,12 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                   ],
                 )),
-            // Por medio de est floating action button tenemos las estrellas para poder puntuar y el boton de favorito
+            // Por medio de este floating action button tenemos las estrellas para poder puntuar y el boton de favorito
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 RatingBar.builder(
-                  initialRating: widget.juego.ratingOutOfFive,
+                  initialRating: rating,
                   minRating: 1,
                   allowHalfRating: true,
                   itemCount: 5,
@@ -253,26 +318,29 @@ class _GameScreenState extends State<GameScreen> {
                     color: Colors.amber,
                   ),
                   //Aquí actualizamos los datos de la lista para que se vea la puntuacion
-                  onRatingUpdate: (rating) {
-                    widget.juego.ratingOutOfFive = rating;
-                    setState(() {});
+                  onRatingUpdate: (newRating) {
+                    setState(() {
+                      rating = newRating;
+                      saveUserRating(newRating);
+                    });
                   },
                 ),
                 FloatingActionButton(
                     // Y aquí cambiamos el boton en funcion de si es favorito o no
                     onPressed: () {
                       setState(() {
-                        if (widget.juego.isFavGame) {
-                          widget.juego.isFavGame = false;
+                        if (isFav) {
+                          isFav = false;
                         } else {
-                          widget.juego.isFavGame = true;
+                          isFav = true;
                         }
+                        saveUserFavoriteStatus(isFav);
                       });
                     },
                     // Por medio de este operador ternario determinamos el estado del boton,
                     // si es favorito esta relleno y si no esta hueco
                     child: Icon(
-                        (widget.juego.isFavGame
+                        (isFav
                             ? Icons.favorite_rounded
                             : Icons.favorite_border_rounded),
                         size: 25)),
@@ -280,5 +348,25 @@ class _GameScreenState extends State<GameScreen> {
             )
           ],
         ));
+  }
+
+// Método para guardar o actualizar la puntuación del usuario
+  void saveUserRating(double rating) async {
+    if (userRatingDoc != null) {
+      await userRatingDoc!.update({'Rating': rating});
+      setState(() {
+        this.rating = rating;
+      });
+    }
+  }
+
+// Método para guardar o actualizar el estado de favorito del usuario
+  void saveUserFavoriteStatus(bool isFavorite) async {
+    if (userRatingDoc != null) {
+      await userRatingDoc!.update({'Favorite': isFavorite});
+      setState(() {
+        isFav = isFavorite;
+      });
+    }
   }
 }

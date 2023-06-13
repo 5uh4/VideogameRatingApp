@@ -19,7 +19,6 @@ class AuthController extends GetxController {
 
   _initialScreen(User? user) {
     if (user == null) {
-      print("pagina login");
       Get.offAll(() => const LoginPage());
     } else {
       Get.offAll(() => const WelcomeScreen());

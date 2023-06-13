@@ -5,8 +5,6 @@ class VideoGameModel {
   String? releaseConsole;
   int? releaseYear;
   double? lengthStory;
-  late bool isFavGame;
-  late double ratingOutOfFive;
   late String imageURL;
 
   VideoGameModel(
@@ -16,8 +14,6 @@ class VideoGameModel {
       this.releaseConsole,
       this.releaseYear,
       this.lengthStory,
-      required this.isFavGame,
-      required this.ratingOutOfFive,
       required this.imageURL});
 
   VideoGameModel.fromJson(Map<String, dynamic> json) {
@@ -27,8 +23,6 @@ class VideoGameModel {
     releaseConsole = json['Release.Console'];
     releaseYear = json['Release.Year'];
     lengthStory = checkDouble(json['Length.Main Story.Median']);
-    isFavGame = checkFavGame(json['isFavGame']);
-    ratingOutOfFive = checkRating(json['ratingOutOfFive']);
     imageURL = checkImage(json['ImageUrl']);
   }
 
@@ -66,8 +60,6 @@ class VideoGameModel {
         'Metadata.publishers': publishers,
         'Release.Console': releaseConsole,
         'Release.Year': releaseYear,
-        'Length.Main Story.Median': lengthStory,
-        'isFavGame': isFavGame,
-        'ratingOutOfFive': ratingOutOfFive
+        'Length.Main Story.Median': lengthStory
       };
 }
